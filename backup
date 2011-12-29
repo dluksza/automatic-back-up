@@ -1,0 +1,25 @@
+#!/bin/sh
+
+### CONFIGURATION ###
+USER="lock"
+MSG_TIMEOUT=-1
+
+### DO NOT MODIFY ###
+function show_notification() {
+	su $USER -c "export DISPLAY=':0.0'; \
+		export XAUTHORITY='/home/$USER/.Xauthority'; \
+		/usr/bin/dbus-send --type=method_call --dest=org.freedesktop.Notifications \
+			/org/freedesktop/Notifications  org.freedesktop.Notifications.Notify string:'' \
+			uint32:0 string:'' string:'$1' string:'' array:string:'' array:string:'' int32:$MSG_TIMEOUT"
+	#notify-send -u $urgency -t $popupTime -i "$icon" "$1" "$coloredLog" 2> /tmp/notify-send-error 
+}
+
+function backup() {
+	show_notification "Backup process started! Do NOT disconnect backup device."
+	mount /dev/backup /mnt/backup
+	ionice -c 3 rsync -az --delete --exclude=/dev --exclude=/mnt --exclude=/media --exclude=/run --exclude=/proc --exclude=/tmp --exclude=/sys --exclude=/var/log --exclude=/var/run / /mnt/backup
+	umount /mnt/backup
+	show_notification "Backup process successed! You can disconnect backup device."
+}
+
+backup &
