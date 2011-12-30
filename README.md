@@ -6,27 +6,7 @@ Simple udev configuration that automatically mounts given (by UUID) device and s
 Install
 =======
 
-First of all you need to get UUID of your back up device/partition:
-
-```
-blkid /dev/sdXY
-```
-
-Then replace my UUID in 99-backup.rules with one given by blkid command.
-In backup file set proper value for USER variable (it should be your UNIX user name)
-Finally copy files into proper places and set execution bit to backup script:
-
-```
-# cp 99-backup.rules /etc/udev/rules.d/
-# cp backup /lib/udev/
-# chmod +x /lib/udev/backup
-```
-
-Last thing you need to do is to reload udev rules by
-
-```
-# udevadm control --reload-rules
-```
+Just run install.sh script from root account
 
 For Awesome WM users
 ====================
