@@ -1,4 +1,8 @@
 #!/bin/sh
+# Filename:      backup
+# Author:        Dariusz Luksza <dariusz@luksza.org>
+# Bug-Reports:   https://github.com/dluksza/automatic-back-up/issues
+# License:       This file is licensed under the GPL v2.
 
 ### CONFIGURATION ###
 USER="#user_name#"

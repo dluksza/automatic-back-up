@@ -1,4 +1,7 @@
-# Detect backup device was connected, then create /dev/backup symlink and run /lib/udev/backup script
+# Filename:      99-backup.rules
+# Author:        Dariusz Luksza <dariusz@luksza.org>
+# Bug-Reports:   https://github.com/dluksza/automatic-back-up/issues
+# License:       This file is licensed under the GPL v2.
 
 ENV{ID_FS_UUID}=="#UUID#", SYMLINK+="backup"
 ACTION=="add", ENV{ID_FS_UUID}=="#UUID#", RUN+="backup"
