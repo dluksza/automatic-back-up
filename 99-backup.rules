@@ -1,4 +1,4 @@
 # Detect backup device was connected, then create /dev/backup symlink and run /lib/udev/backup script
 
-ENV{ID_FS_UUID}=="97377fed-edaf-407b-9e02-5c6cecd6dceb", SYMLINK+="backup"
-ACTION=="add", ENV{ID_FS_UUID}=="97377fed-edaf-407b-9e02-5c6cecd6dceb", RUN+="backup"
+ENV{ID_FS_UUID}=="#UUID#", SYMLINK+="backup"
+ACTION=="add", ENV{ID_FS_UUID}=="#UUID#", RUN+="backup"

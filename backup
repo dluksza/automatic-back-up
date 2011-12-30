@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ### CONFIGURATION ###
-USER="lock"
+USER="#user_name#"
 MSG_TIMEOUT=-1
 
 ### DO NOT MODIFY ###
